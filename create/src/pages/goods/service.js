@@ -23,3 +23,9 @@ export async function updateRule(params) {
     data: { ...params, method: 'update' },
   });
 }
+
+export async function queryGoods(params) {
+  return request('/goods/page', {
+    params,
+  })
+}

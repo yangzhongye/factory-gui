@@ -53,6 +53,7 @@ const errorHandler = error => {
 const request = extend({
   //getResponse: true, //是否获取response
   errorHandler,// 默认错误处理
+  prefix: '/server/api',
 });
 
 // request拦截器, 改变url 或 options.

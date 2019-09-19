@@ -1,4 +1,4 @@
-import { addRule, queryRule, removeRule, updateRule } from './service';
+import { addRule, queryGoods, removeRule, updateRule } from './service';
 
 const Model = {
   namespace: 'goods',
@@ -10,10 +10,19 @@ const Model = {
   },
   effects: {
     *fetch({ payload }, { call, put }) {
-      const response = yield call(queryRule, payload);
+      const response = yield call(queryGoods, payload);
+      const { content, totalElements, number, size } = response
+      const result = {
+        list: content,
+        pagination: {
+          total: totalElements,
+          pageSize: size,
+          current: number + 1,
+        },
+      };
       yield put({
         type: 'save',
-        payload: response,
+        payload: result,
       });
     },
 

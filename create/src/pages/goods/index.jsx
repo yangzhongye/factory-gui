@@ -35,7 +35,7 @@ const getValue = obj =>
 /* eslint react/no-multi-comp:0 */
 @connect(({ goods, loading }) => ({
   goods,
-  loading: loading.models.rule,
+  loading: loading.models.goods,
 }))
 class TableList extends Component {
   state = {
@@ -101,31 +101,6 @@ class TableList extends Component {
       type: 'goods/fetch',
       payload: {},
     });
-  };
-
-  handleMenuClick = e => {
-    const { dispatch } = this.props;
-    const { selectedRows } = this.state;
-    if (!selectedRows) return;
-
-    switch (e.key) {
-      case 'remove':
-        dispatch({
-          type: 'goods/remove',
-          payload: {
-            key: selectedRows.map(row => row.key),
-          },
-          callback: () => {
-            this.setState({
-              selectedRows: [],
-            });
-          },
-        });
-        break;
-
-      default:
-        break;
-    }
   };
 
   handleSearch = e => {

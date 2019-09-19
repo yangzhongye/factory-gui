@@ -10,7 +10,7 @@ export async function getFakeCaptcha(mobile) {
 }
 
 export async function userLogin(params) {
-  return request('/server/api/login', {
+  return request('/login', {
     method: 'POST',
     data: params,
   });
