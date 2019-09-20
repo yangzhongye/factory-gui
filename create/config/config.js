@@ -176,7 +176,7 @@ export default {
   },
   chainWebpack: webpackPlugin,
   
-  history: 'hash',
+  //history: 'hash',
   
   proxy: {
     '/server/api/': {
