@@ -91,6 +91,22 @@ class TableList extends Component {
     });
   }
 
+  handleStandardTableChange = (pagination) => {
+    const { dispatch } = this.props;
+    const { formValues } = this.state;
+    
+    const params = {
+      page: pagination.current - 1,
+      pageSize: pagination.pageSize,
+      ...formValues,
+    };
+
+    dispatch({
+      type: 'goods/fetch',
+      payload: params,
+    });
+  };
+
   handleFormReset = () => {
     const { form, dispatch } = this.props;
     form.resetFields();
@@ -249,6 +265,7 @@ class TableList extends Component {
               loading={loading}
               data={data}
               columns={this.columns}
+              onChange={this.handleStandardTableChange}
             />
           </div>
         </Card>

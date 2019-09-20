@@ -9,6 +9,14 @@ class StandardTable extends Component {
     const { columns } = props;
   }
 
+  handleTableChange = (pagination, filters, sorter, ...rest) => {
+    const { onChange } = this.props;
+
+    if (onChange) {
+      onChange(pagination, filters, sorter, ...rest);
+    }
+  };
+
   render() {
     const { data, rowKey, ...rest } = this.props;
     const { list = [], pagination = false } = data || {};
@@ -25,6 +33,7 @@ class StandardTable extends Component {
           rowKey={rowKey || 'key'}
           dataSource={list}
           pagination={paginationProps}
+          onChange={this.handleTableChange}
           {...rest}
         />
       </div>

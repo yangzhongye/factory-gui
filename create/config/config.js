@@ -176,6 +176,8 @@ export default {
   },
   chainWebpack: webpackPlugin,
   
+  history: 'hash',
+  
   proxy: {
     '/server/api/': {
       target: 'http://localhost:8080/',
